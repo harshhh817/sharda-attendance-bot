@@ -1,0 +1,104 @@
+🔗 Opened Sharda E-Zone login page.
+✅ Entered System ID.
+✅ Clicked OTP request button.
+⏳ Waiting for OTP...
+✅ OTP Found: 947800
+🔢 Entered OTP: 947800
+✅ Logged in successfully.
+🔄 Navigating to attendance page...
+📩 Sent attendance report to Telegram!
+🚪 Browser closed.
+🔗 Opened Sharda E-Zone login page.
+✅ Entered System ID.
+✅ Clicked OTP request button.
+⏳ Waiting for OTP...
+✅ OTP Found: 947800
+🔢 Entered OTP: 947800
+✅ Logged in successfully.
+🔄 Navigating to attendance page...
+❌ Error: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000102d9c2d4 cxxbridge1$str$ptr + 2739836
+1   chromedriver                        0x0000000102d94934 cxxbridge1$str$ptr + 2708700
+2   chromedriver                        0x00000001028f5f90 cxxbridge1$string$len + 93360
+3   chromedriver                        0x000000010293cde4 cxxbridge1$string$len + 383748
+4   chromedriver                        0x000000010297de80 cxxbridge1$string$len + 650144
+5   chromedriver                        0x0000000102931060 cxxbridge1$string$len + 335232
+6   chromedriver                        0x0000000102d64c38 cxxbridge1$str$ptr + 2512864
+7   chromedriver                        0x0000000102d67f58 cxxbridge1$str$ptr + 2525952
+8   chromedriver                        0x0000000102d4a578 cxxbridge1$str$ptr + 2404640
+9   chromedriver                        0x0000000102d68818 cxxbridge1$str$ptr + 2528192
+10  chromedriver                        0x0000000102d3af2c cxxbridge1$str$ptr + 2341588
+11  chromedriver                        0x0000000102d84a60 cxxbridge1$str$ptr + 2643464
+12  chromedriver                        0x0000000102d84be8 cxxbridge1$str$ptr + 2643856
+13  chromedriver                        0x0000000102d945a8 cxxbridge1$str$ptr + 2707792
+14  libsystem_pthread.dylib             0x000000018d056034 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018d050e3c thread_start + 8
+
+🚪 Browser closed.
+🔗 Opened Sharda E-Zone login page.
+✅ Entered System ID.
+✅ Clicked OTP request button.
+⏳ Waiting for OTP...
+✅ OTP Found: 947800
+🔢 Entered OTP: 947800
+✅ Logged in successfully.
+🔄 Navigating to attendance page...
+❌ Error: Message: 
+Stacktrace:
+0   chromedriver                        0x000000010306c2d4 cxxbridge1$str$ptr + 2739836
+1   chromedriver                        0x0000000103064934 cxxbridge1$str$ptr + 2708700
+2   chromedriver                        0x0000000102bc5f90 cxxbridge1$string$len + 93360
+3   chromedriver                        0x0000000102c0cde4 cxxbridge1$string$len + 383748
+4   chromedriver                        0x0000000102c4de80 cxxbridge1$string$len + 650144
+5   chromedriver                        0x0000000102c01060 cxxbridge1$string$len + 335232
+6   chromedriver                        0x0000000103034c38 cxxbridge1$str$ptr + 2512864
+7   chromedriver                        0x0000000103037f58 cxxbridge1$str$ptr + 2525952
+8   chromedriver                        0x000000010301a578 cxxbridge1$str$ptr + 2404640
+9   chromedriver                        0x0000000103038818 cxxbridge1$str$ptr + 2528192
+10  chromedriver                        0x000000010300af2c cxxbridge1$str$ptr + 2341588
+11  chromedriver                        0x0000000103054a60 cxxbridge1$str$ptr + 2643464
+12  chromedriver                        0x0000000103054be8 cxxbridge1$str$ptr + 2643856
+13  chromedriver                        0x00000001030645a8 cxxbridge1$str$ptr + 2707792
+14  libsystem_pthread.dylib             0x000000018d056034 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018d050e3c thread_start + 8
+
+🚪 Browser closed.
+🔗 Opened Sharda E-Zone login page.
+✅ Entered System ID.
+✅ Clicked OTP request button.
+⏳ Waiting for OTP...
+✅ OTP Found: 947800
+🔢 Entered OTP: 947800
+✅ Logged in successfully.
+🔄 Navigating to attendance page...
+❌ Error: Message: 
+Stacktrace:
+0   chromedriver                        0x00000001006842d4 cxxbridge1$str$ptr + 2739836
+1   chromedriver                        0x000000010067c934 cxxbridge1$str$ptr + 2708700
+2   chromedriver                        0x00000001001ddf90 cxxbridge1$string$len + 93360
+3   chromedriver                        0x0000000100224de4 cxxbridge1$string$len + 383748
+4   chromedriver                        0x0000000100265e80 cxxbridge1$string$len + 650144
+5   chromedriver                        0x0000000100219060 cxxbridge1$string$len + 335232
+6   chromedriver                        0x000000010064cc38 cxxbridge1$str$ptr + 2512864
+7   chromedriver                        0x000000010064ff58 cxxbridge1$str$ptr + 2525952
+8   chromedriver                        0x0000000100632578 cxxbridge1$str$ptr + 2404640
+9   chromedriver                        0x0000000100650818 cxxbridge1$str$ptr + 2528192
+10  chromedriver                        0x0000000100622f2c cxxbridge1$str$ptr + 2341588
+11  chromedriver                        0x000000010066ca60 cxxbridge1$str$ptr + 2643464
+12  chromedriver                        0x000000010066cbe8 cxxbridge1$str$ptr + 2643856
+13  chromedriver                        0x000000010067c5a8 cxxbridge1$str$ptr + 2707792
+14  libsystem_pthread.dylib             0x000000018d056034 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018d050e3c thread_start + 8
+
+🚪 Browser closed.
+🔗 Opened Sharda E-Zone login page.
+✅ Entered System ID.
+✅ Clicked OTP request button.
+⏳ Waiting for OTP...
+✅ OTP Found: 947800
+🔢 Entered OTP: 947800
+✅ Logged in successfully.
+🔄 Navigating to attendance page...
+📩 Sent attendance report to Telegram!
+🚪 Browser closed.
