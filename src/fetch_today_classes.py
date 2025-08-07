@@ -7,10 +7,13 @@ import requests
 from datetime import date
 from fetch_otp import get_latest_otp
 
-# Constants (kept consistent with autologin.py)
-SYSTEM_ID = "2023497222"
-TELEGRAM_BOT_TOKEN = "7688760570:AAFxql5tfEBIkBvwche2Zj_74zRUuVlS7rY"
-TELEGRAM_CHAT_ID = "6244107851"
+import os
+
+# Get configuration from environment variables (for cloud deployment)
+# Fall back to hardcoded values for local development
+SYSTEM_ID = os.getenv('SYSTEM_ID', "2023497222")
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN', "7688760570:AAFxql5tfEBIkBvwche2Zj_74zRUuVlS7rY")
+TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID', "6244107851")
 
 
 def send_telegram_message(message: str) -> None:
@@ -29,8 +32,26 @@ def send_telegram_photo(photo_path, caption=None) -> None:
         requests.post(url, data=data, files=files)
 
 
-driver = webdriver.Chrome()
-driver.set_window_size(1600, 2400)
+# Set up Selenium WebDriver for cloud deployment
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')  # Run in headless mode for cloud
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+chrome_options.add_argument('--disable-gpu')
+chrome_options.add_argument('--window-size=1600,2400')
+
+# Try to use Chrome, fall back to Chromium
+try:
+    driver = webdriver.Chrome(options=chrome_options)
+except:
+    try:
+        # For systems with chromium-browser
+        chrome_options.binary_location = '/usr/bin/chromium-browser'
+        driver = webdriver.Chrome(options=chrome_options)
+    except:
+        # Last resort - try without options
+        driver = webdriver.Chrome()
+        driver.set_window_size(1600, 2400)
 
 try:
     driver.get("https://student.sharda.ac.in/admin")

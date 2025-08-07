@@ -1,3 +1,4 @@
+import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -6,10 +7,11 @@ import time
 import requests
 from fetch_otp import get_latest_otp
 
-# Constants
-SYSTEM_ID = "2023497222"
-TELEGRAM_BOT_TOKEN = "7688760570:AAFxql5tfEBIkBvwche2Zj_74zRUuVlS7rY"  # Replace with your Telegram Bot Token
-TELEGRAM_CHAT_ID = "6244107851"  # Replace with your Telegram Chat ID
+# Get configuration from environment variables (for cloud deployment)
+# Fall back to hardcoded values for local development
+SYSTEM_ID = os.getenv('SYSTEM_ID', "2023497222")
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN', "7688760570:AAFxql5tfEBIkBvwche2Zj_74zRUuVlS7rY")
+TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID', "6244107851")
 
 def send_telegram_message(message):
     """Send a message via Telegram bot."""
@@ -17,8 +19,25 @@ def send_telegram_message(message):
     data = {"chat_id": TELEGRAM_CHAT_ID, "text": message}
     requests.post(url, data=data)
 
-# Set up Selenium WebDriver
-driver = webdriver.Chrome()
+# Set up Selenium WebDriver for cloud deployment
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')  # Run in headless mode for cloud
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+chrome_options.add_argument('--disable-gpu')
+chrome_options.add_argument('--window-size=1920,1080')
+
+# Try to use Chrome, fall back to Chromium
+try:
+    driver = webdriver.Chrome(options=chrome_options)
+except:
+    try:
+        # For systems with chromium-browser
+        chrome_options.binary_location = '/usr/bin/chromium-browser'
+        driver = webdriver.Chrome(options=chrome_options)
+    except:
+        # Last resort - try without options
+        driver = webdriver.Chrome()
 
 try:
     driver.get("https://student.sharda.ac.in/admin")

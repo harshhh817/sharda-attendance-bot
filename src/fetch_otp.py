@@ -1,10 +1,12 @@
+import os
 import imaplib
 import email
 import re
 
-# Your email credentials
-EMAIL = "2023497222.harsh@ug.sharda.ac.in"
-APP_PASSWORD = "caej hdte trrl bydy"  # Use an App Password, not your actual password
+# Get email credentials from environment variables (for cloud deployment)
+# Fall back to hardcoded values for local development
+EMAIL = os.getenv('GMAIL_USER', "2023497222.harsh@ug.sharda.ac.in")
+APP_PASSWORD = os.getenv('GMAIL_PASSWORD', "caej hdte trrl bydy")
 IMAP_SERVER = "imap.gmail.com"
 SENDER_EMAIL = "ezone@shardauniversity.com"
 

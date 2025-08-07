@@ -1,6 +1,7 @@
 import logging
 import subprocess
 import threading
+import os
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
@@ -10,10 +11,10 @@ logging.basicConfig(
     level=logging.INFO
 )
 
-# Your Telegram Bot Token (same as in your autologin.py)
-TELEGRAM_BOT_TOKEN = "7688760570:AAFxql5tfEBIkBvwche2Zj_74zRUuVlS7rY"
-# Your Telegram Chat ID (for security - only you can control the bot)
-AUTHORIZED_CHAT_ID = "6244107851"
+# Get configuration from environment variables (for cloud deployment)
+# Fall back to hardcoded values for local development
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN', "7688760570:AAFxql5tfEBIkBvwche2Zj_74zRUuVlS7rY")
+AUTHORIZED_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID', "6244107851")
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Send a message when the command /start is issued."""
@@ -22,6 +23,14 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         return
         
     await update.message.reply_text('Hi! I can help you check your attendance and timetable.\n\nUse /check for attendance, /timetable for timetable, /today for today\'s classes.')
+
+async def health_check(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Health check endpoint for monitoring."""
+    if str(update.effective_chat.id) != AUTHORIZED_CHAT_ID:
+        await update.message.reply_text("Unauthorized access denied.")
+        return
+    
+    await update.message.reply_text("Bot is running! ✅")
 
 async def run_attendance_check(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Run the attendance check script when /check command is issued."""
@@ -34,7 +43,7 @@ async def run_attendance_check(update: Update, context: ContextTypes.DEFAULT_TYP
     # Run the script in a separate thread to avoid blocking the bot
     def run_script():
         try:
-            subprocess.run(["python3", "autologin.py"], check=True)
+            subprocess.run(["python3", "src/autologin.py"], check=True)
         except subprocess.CalledProcessError as e:
             logging.error(f"Script execution failed: {e}")
     
@@ -51,7 +60,7 @@ async def run_timetable_check(update: Update, context: ContextTypes.DEFAULT_TYPE
     
     def run_script():
         try:
-            subprocess.run(["python3", "fetch_timetable.py"], check=True)
+            subprocess.run(["python3", "src/fetch_timetable.py"], check=True)
         except subprocess.CalledProcessError as e:
             logging.error(f"Script execution failed: {e}")
     
@@ -68,7 +77,7 @@ async def run_today_classes(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     
     def run_script():
         try:
-            subprocess.run(["python3", "fetch_today_classes.py"], check=True)
+            subprocess.run(["python3", "src/fetch_today_classes.py"], check=True)
         except subprocess.CalledProcessError as e:
             logging.error(f"Script execution failed: {e}")
     
@@ -82,6 +91,7 @@ def main() -> None:
 
     # Add command handlers
     application.add_handler(CommandHandler("start", start))
+    application.add_handler(CommandHandler("health", health_check))
     application.add_handler(CommandHandler("check", run_attendance_check))
     application.add_handler(CommandHandler("timetable", run_timetable_check))
     application.add_handler(CommandHandler("today", run_today_classes))
