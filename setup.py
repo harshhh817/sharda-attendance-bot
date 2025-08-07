@@ -103,12 +103,12 @@ PAGE_LOAD_TIMEOUT = 20
 def update_script_files(config):
     """Update all script files with the new configuration"""
     files_to_update = [
-        'autologin.py',
-        'fetch_otp.py', 
-        'imap.py',
-        'telegram_bot_handler.py',
-        'fetch_timetable.py',
-        'fetch_today_classes.py'
+        'src/autologin.py',
+        'src/fetch_otp.py', 
+        'src/imap.py',
+        'src/telegram_bot_handler.py',
+        'src/fetch_timetable.py',
+        'src/fetch_today_classes.py'
     ]
     
     for filename in files_to_update:
@@ -138,7 +138,7 @@ def update_script_files(config):
 
 def make_scripts_executable():
     """Make shell scripts executable"""
-    scripts = ['start_bot.sh', 'stop_bot.sh', 'restart_bot.sh']
+    scripts = ['scripts/start_bot.sh', 'scripts/stop_bot.sh', 'scripts/restart_bot.sh']
     for script in scripts:
         if os.path.exists(script):
             os.chmod(script, 0o755)

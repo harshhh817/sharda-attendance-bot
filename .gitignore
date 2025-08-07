@@ -1,38 +1,71 @@
 # Configuration files with sensitive data
 config.py
 *.env
+.env.local
+.env.production
 
 # Logs
 *.log
 error.log
 output.log
+logs/
 
 # Screenshots and temporary files
 *.png
 *.jpg
 *.jpeg
+*.gif
 page_source.html
 timetable_page.html
+*.mp4
+*.avi
+*.mov
 
 # Python cache
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
 # Virtual environments
 venv/
 env/
 ENV/
+.venv/
+.venv/
+env.bak/
+venv.bak/
 
 # IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 
 # OS files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 
 # Chrome driver
@@ -42,3 +75,29 @@ chromedriver.exe
 # Temporary files
 temp/
 tmp/
+*.tmp
+*.temp
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Test files
+test_*.py
+*_test.py
+tests/
+test/
+
+# Documentation build
+docs/_build/
+site/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
