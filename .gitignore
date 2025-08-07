@@ -1,0 +1,44 @@
+# Configuration files with sensitive data
+config.py
+*.env
+
+# Logs
+*.log
+error.log
+output.log
+
+# Screenshots and temporary files
+*.png
+*.jpg
+*.jpeg
+page_source.html
+timetable_page.html
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Chrome driver
+chromedriver
+chromedriver.exe
+
+# Temporary files
+temp/
+tmp/

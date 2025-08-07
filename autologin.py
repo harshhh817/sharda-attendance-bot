@@ -65,26 +65,127 @@ try:
     # Navigate to Attendance Page
     driver.get("https://student.sharda.ac.in/admin/courses")
     print("🔄 Navigating to attendance page...")
-    time.sleep(7)  # Allow page to load
-
-    # Extract Attendance Data
-    attendance_table = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.ID, "table1"))
-    )
-    rows = attendance_table.find_elements(By.TAG_NAME, "tr")
-
-    attendance_data = []
-    for row in rows[1:]:  # Skip the header row
-        cols = row.find_elements(By.TAG_NAME, "td")
-        if len(cols) >= 9:  # Ensure there's a 9th column for percentage
-            course_name = cols[0].text.strip()
-            course_code = cols[1].text.strip()
-            percentage = cols[8].text.strip()  # Get percentage from the 9th column
-
-            if not percentage:
-                percentage = "N/A"
-
-            attendance_data.append(f"{course_name} ({course_code}): {percentage}%")
+    
+    # Wait for the page to load completely
+    time.sleep(5)
+    
+    # Take a screenshot for debugging
+    driver.save_screenshot('attendance_page.png')
+    print("📸 Took a screenshot of the attendance page for debugging")
+    
+    # Save page source for inspection
+    with open('page_source.html', 'w', encoding='utf-8') as f:
+        f.write(driver.page_source)
+    print("💾 Saved page source to 'page_source.html'")
+    
+    # Debug: Print all tables on the page
+    print("\n🔍 Looking for tables on the page...")
+    tables = driver.find_elements(By.TAG_NAME, 'table')
+    print(f"Found {len(tables)} table(s) on the page")
+    
+    # Print all elements with class names containing 'table'
+    print("\n🔍 Elements with 'table' in class name:")
+    table_elements = driver.find_elements(By.CSS_SELECTOR, "[class*='table']")
+    for i, elem in enumerate(table_elements, 1):
+        print(f"  {i}. Tag: {elem.tag_name}, ID: {elem.get_attribute('id')}, Classes: {elem.get_attribute('class')}")
+    
+    # Print all div elements that might contain the attendance data
+    print("\n🔍 Looking for potential containers with attendance data...")
+    potential_containers = driver.find_elements(By.CSS_SELECTOR, "div.card, div.panel, div.tab-content, div.content-wrapper")
+    for i, container in enumerate(potential_containers, 1):
+        print(f"\n  Container {i}:")
+        print(f"  - ID: {container.get_attribute('id')}")
+        print(f"  - Classes: {container.get_attribute('class')}")
+        print(f"  - Text preview: {container.text[:100]}...")
+    
+    # Try to find the attendance table - the ID might have changed
+    try:
+        # First try with common table selectors
+        table_selectors = [
+            (By.CSS_SELECTOR, "table.table"),
+            (By.CSS_SELECTOR, "table#table1"),
+            (By.CSS_SELECTOR, "table[class*='attendance']"),
+            (By.CSS_SELECTOR, "table.dataTable"),
+            (By.CSS_SELECTOR, "table.datatable"),
+            (By.TAG_NAME, "table")
+        ]
+        
+        attendance_table = None
+        for selector in table_selectors:
+            try:
+                attendance_table = WebDriverWait(driver, 3).until(
+                    EC.presence_of_element_located(selector)
+                )
+                print(f"\n✅ Found table using selector: {selector}")
+                print(f"   - Table ID: {attendance_table.get_attribute('id')}")
+                print(f"   - Table classes: {attendance_table.get_attribute('class')}")
+                print(f"   - Rows found: {len(attendance_table.find_elements(By.TAG_NAME, 'tr'))}")
+                break
+            except Exception as e:
+                print(f"  ❌ Table not found with selector {selector}")
+                continue
+                
+        if not attendance_table:
+            # Try to find any element that might contain attendance data
+            print("\n🔍 Trying to find attendance data in other elements...")
+            potential_elements = driver.find_elements(By.XPATH, "//*[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'attendance')]")
+            if potential_elements:
+                print(f"Found {len(potential_elements)} elements containing 'attendance' in text")
+                for i, elem in enumerate(potential_elements[:5], 1):  # Show first 5
+                    print(f"  {i}. Tag: {elem.tag_name}, ID: {elem.get_attribute('id')}, Text: {elem.text[:100]}...")
+            
+            raise Exception("Could not find attendance table on the page. Check the saved page_source.html for more details.")
+            
+        # Get all rows in the table body
+        rows = attendance_table.find_elements(By.CSS_SELECTOR, "tbody tr")
+        if not rows:
+            # If no rows in tbody, try getting all rows directly
+            rows = attendance_table.find_elements(By.TAG_NAME, "tr")
+            
+        print(f"📊 Found {len(rows)} rows in attendance table")
+        
+        attendance_data = []
+        for row in rows:
+            try:
+                # Get all cells in the row
+                cols = row.find_elements(By.TAG_NAME, "td")
+                if not cols:
+                    continue
+                    
+                # Print column data for debugging
+                col_texts = [col.text.strip() for col in cols]
+                print("📋 Row data:", col_texts)
+                
+                # Try to extract course info and percentage
+                # The exact indices might need adjustment based on the actual structure
+                if len(cols) >= 3:  # At least 3 columns expected: course code, name, percentage
+                    # Try to find percentage (look for a cell containing '%')
+                    percentage = "N/A"
+                    course_code = cols[0].text.strip() if len(cols) > 0 else "Unknown"
+                    course_name = cols[1].text.strip() if len(cols) > 1 else "Unknown"
+                    
+                    # Find the column with percentage
+                    for i, col in enumerate(cols):
+                        if '%' in col.text:
+                            percentage = col.text.strip()
+                            break
+                    
+                    attendance_data.append(f"{course_name} ({course_code}): {percentage}")
+                    
+            except Exception as e:
+                print(f"⚠️ Error processing row: {str(e)}")
+                continue
+                
+        if not attendance_data:
+            raise Exception("No attendance data found in the table")
+            
+    except Exception as e:
+        error_msg = f"❌ Error extracting attendance data: {str(e)}"
+        print(error_msg)
+        # Send the error message via Telegram
+        send_telegram_message(error_msg)
+        # Re-raise the exception to be caught by the outer try-except
+        raise
 
     # Format the message
     attendance_message = "📊 *Attendance Report*\n\n" + "\n".join(attendance_data)
