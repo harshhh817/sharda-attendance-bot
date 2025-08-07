@@ -1,8 +1,34 @@
-# Sharda University Attendance Bot
+# Sharda University Attendance Bot 🤖
 
 An automated Telegram bot that helps Sharda University students check their attendance, view timetables, and get today's classes without manually logging into the portal.
 
-## Features
+## 🎬 Demo Video
+
+> **Watch the bot in action!** This demo shows all 4 commands working seamlessly.
+
+[![Demo Video](https://img.shields.io/badge/📹-Watch_Demo_Video-blue?style=for-the-badge&logo=youtube)](https://youtu.be/demo-video-link)
+
+**Demo Features:**
+- ✅ Automated login to Sharda portal
+- ✅ Today's classes with times and rooms
+- ✅ Attendance percentages for all courses
+- ✅ Full timetable with screenshots
+- ✅ Real-time Telegram responses
+
+*Note: Replace the demo video link above with your actual video URL*
+
+## 🎬 Demo & Features
+
+### 📱 Bot Commands in Action
+
+| Command | Description | Demo |
+|---------|-------------|------|
+| `/start` | Welcome message and available commands | ![Start Command](demo_images/start_command.png) |
+| `/today` | Get today's class schedule with times and rooms | ![Today's Classes](demo_images/todays_classes.png) |
+| `/check` | Check attendance percentages for all courses | ![Attendance Check](demo_images/attendance_check.png) |
+| `/timetable` | Get full weekly timetable with screenshots | ![Timetable](demo_images/timetable.png) |
+
+### ✨ Key Features
 
 - 🤖 **Automated Login**: Automatically logs into Sharda E-Zone portal
 - 📊 **Attendance Check**: Fetches and displays attendance percentages for all courses
@@ -10,6 +36,8 @@ An automated Telegram bot that helps Sharda University students check their atte
 - 📋 **Full Timetable**: Displays complete weekly timetable (when available)
 - 📧 **Email OTP**: Automatically retrieves OTP from Gmail for authentication
 - 📱 **Telegram Integration**: All results sent directly to your Telegram
+- 🖼️ **Screenshots**: Automatic capture and sending of timetable images
+- ⚡ **Real-time Updates**: Instant notifications and responses
 
 ## Prerequisites
 
@@ -19,9 +47,15 @@ An automated Telegram bot that helps Sharda University students check their atte
 - Telegram account
 - Sharda University student account
 
-## Setup Instructions
+## 🚀 Quick Start
 
-### 1. Clone/Download the Project
+### ⚙️ Easy Setup Process
+
+![Setup Process](demo_images/setup_process.png)
+
+**Setup Time: 5 minutes** ⏱️
+
+### 📋 Setup Instructions
 ```bash
 git clone <your-repo-url>
 cd attendence
@@ -100,7 +134,11 @@ chmod +x start_bot.sh stop_bot.sh restart_bot.sh
 ./start_bot.sh
 ```
 
-## Usage
+## 🎯 What You Get
+
+![Features Overview](demo_images/features_overview.png)
+
+## 📱 Usage
 
 Once the bot is running, send these commands to your Telegram bot:
 
