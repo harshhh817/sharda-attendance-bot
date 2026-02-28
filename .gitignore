@@ -45,3 +45,17 @@ Thumbs.db
 # Project specific
 *.png
 page_source.html
+
+# Temp and backup files
+*.bak
+*.bak2
+*.backup
+*.html
+debug_table*.py
+fix_*.py
+test_*.py
+autologin*.py*
+autologin_wrapper*
+attendence_backup/
+cron_error.log.*
+cron_output.log.*

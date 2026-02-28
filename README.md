@@ -1,100 +1,59 @@
-# Sharda Attendance Bot
+# 🚀 Simple Sharda Attendance Bot
 
-A Python bot that automatically checks your attendance percentage at Sharda University and notifies you via Telegram.
+A clean, simple Telegram bot for checking Sharda University attendance. No conflicts, no complexity!
 
-## Features
+## ✨ Features
 
-- 🔐 Secure login using system ID and OTP
-- 📊 Fetches attendance data from the Sharda portal
-- 📱 Sends notifications via Telegram
-- 🔄 Can be scheduled to run automatically
-- 🔒 Secure credential management using environment variables
+- ✅ Simple Telegram bot
+- ✅ Clean code structure
+- ✅ No complex configurations
+- ✅ Easy to understand and modify
 
-## Prerequisites
+## 🛠️ Setup
 
-- Python 3.8+
-- Chrome browser installed
-- A Telegram bot token (get from [@BotFather](https://t.me/botfather))
-- App password for your Sharda email
-
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/sharda-attendance-bot.git
-   cd sharda-attendance-bot
-   ```
-
-2. Create a virtual environment (recommended):
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Configure the bot by creating a `.env` file:
-   ```bash
-   cp .env.example .env
-   ```
-   Then edit the `.env` file with your credentials.
-
-## Usage
-
-### Running the Bot
-
+### 1. Install Dependencies
 ```bash
-# Run the bot directly
-python -m src.bot
-
-# Or use the helper script
-./start_bot.sh
+pip install -r requirements.txt
 ```
 
-### Environment Variables
+### 2. Create Bot Token
+1. Go to [@BotFather](https://t.me/botfather) on Telegram
+2. Send `/newbot`
+3. Choose a name for your bot
+4. Get your bot token
 
-Create a `.env` file in the project root with the following variables:
-
-```
-# Required
-SYSTEM_ID=your_system_id
-EMAIL=your_email@sharda.ac.in
-APP_PASSWORD=your_app_password
-TELEGRAM_BOT_TOKEN=your_telegram_bot_token
-TELEGRAM_CHAT_ID=your_telegram_chat_id
-
-# Optional (with defaults)
-LOG_LEVEL=INFO
-HEADLESS=False  # Set to True for server use
-```
-
-## Scheduling
-
-To run the bot daily, you can set up a cron job (Linux/macOS) or Task Scheduler (Windows).
-
-### Linux/macOS
-
+### 3. Update .env File
+Replace `YOUR_NEW_BOT_TOKEN_HERE` with your actual bot token:
 ```bash
-# Edit crontab
-crontab -e
-
-# Add this line to run daily at 9 AM
-0 9 * * * cd /path/to/sharda-attendance-bot && ./start_bot.sh
+TELEGRAM_BOT_TOKEN=1234567890:ABCdefGHIjklMNOpqrsTUVwxyz
 ```
 
-## Security Notes
+### 4. Run the Bot
+```bash
+python simple_bot.py
+```
 
-- Never commit your `.env` file
-- Use app-specific passwords instead of your main email password
-- Keep your Telegram bot token private
+## 📱 Commands
 
-## Contributing
+- `/start` - Start the bot
+- `/attendance` - Check your attendance
+- `/help` - Show help
 
-Contributions are welcome! Please open an issue or submit a pull request.
+## 🔧 How It Works
 
-## License
+1. **Simple Structure**: One file, clean code
+2. **No Conflicts**: Fresh start, no old configurations
+3. **Easy Debugging**: Clear error messages
+4. **Minimal Dependencies**: Only what's needed
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 🎯 Next Steps
+
+1. Test the bot with `/start`
+2. Try `/attendance` to check attendance
+3. Modify the code as needed
+
+This bot is designed to be simple and conflict-free!
+
+
+
+
