@@ -1,0 +1,93 @@
+SHARDA ATTENDANCE BOT - USAGE GUIDE
+====================================
+
+PREREQUISITES
+-------------
+- Python 3.7 or higher
+- Chrome or Firefox browser
+- A Telegram account
+
+INSTALLATION
+------------
+1. Clone the repository:
+   git clone https://github.com/harshhh817/sharda-attendance-bot.git
+   cd sharda-attendance-bot
+
+2. Set up a virtual environment (recommended):
+   # On macOS/Linux:
+   python -m venv venv
+   source venv/bin/activate
+   
+   # On Windows:
+   python -m venv venv
+   venv\Scripts\activate
+
+3. Install dependencies:
+   pip install -r requirements.txt
+
+CONFIGURATION
+-------------
+1. Create and edit the .env file:
+   cp .env.example .env
+   # Edit the .env file with your details
+
+2. Required .env settings:
+   SYSTEM_ID=your_sharda_id
+   EMAIL=your_email@sharda.ac.in
+   APP_PASSWORD=your_email_app_password
+   TELEGRAM_BOT_TOKEN=your_telegram_bot_token
+   TELEGRAM_CHAT_ID=your_telegram_chat_id
+
+3. Get a Telegram Bot Token:
+   - Message @BotFather on Telegram
+   - Use /newbot command and follow instructions
+   - Copy the token to TELEGRAM_BOT_TOKEN
+
+4. Get your Chat ID:
+   - Message your bot on Telegram
+   - Visit: https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getUpdates
+   - Look for "chat":{"id":<YOUR_CHAT_ID>}
+
+RUNNING THE BOT
+---------------
+1. Start the bot:
+   python -m src
+   
+   Or use the launcher script:
+   chmod +x start_bot.sh
+   ./start_bot.sh
+
+2. Telegram Commands:
+   /start - Start the bot
+   /help - Show help message
+   /check - Check attendance
+   /status - Show bot status
+
+EMAIL APP PASSWORD SETUP
+-----------------------
+For Gmail:
+1. Go to Google Account → Security
+2. Enable 2-Step Verification if not already
+3. Under "App passwords", generate new app password
+4. Select "Mail" and "Other (Custom name)"
+5. Name it "Sharda Bot" and generate
+6. Use this app password in your .env file
+
+TROUBLESHOOTING
+---------------
+- If Chrome doesn't work, install Chrome:
+  # On macOS:
+  brew install --cask google-chrome
+  
+  # On Ubuntu/Debian:
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  sudo apt install ./google-chrome-stable_current_amd64.deb
+
+- Check logs in logs/bot.log for errors
+- Make sure all required .env variables are set
+- Ensure your internet connection is stable
+
+SUPPORT
+-------
+For issues, please open an issue at:
+https://github.com/harshhh817/sharda-attendance-bot/issues

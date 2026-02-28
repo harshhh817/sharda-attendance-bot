@@ -1,27 +1,4 @@
-# Configuration files with sensitive data
-config.py
-*.env
-.env.local
-.env.production
-
-# Logs
-*.log
-error.log
-output.log
-logs/
-
-# Screenshots and temporary files
-*.png
-*.jpg
-*.jpeg
-*.gif
-page_source.html
-timetable_page.html
-*.mp4
-*.avi
-*.mov
-
-# Python cache
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -33,7 +10,6 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
 lib64/
 parts/
 sdist/
@@ -42,62 +18,44 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
-# Virtual environments
+# Virtual Environment
 venv/
 env/
 ENV/
-.venv/
-.venv/
-env.bak/
-venv.bak/
 
-# IDE files
-.vscode/
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+
+# IDE
 .idea/
+.vscode/
 *.swp
 *.swo
-*~
 
-# OS files
+# System Files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
 
-# Chrome driver
-chromedriver
-chromedriver.exe
+# Project specific
+*.png
+page_source.html
 
-# Temporary files
-temp/
-tmp/
-*.tmp
-*.temp
-
-# Backup files
+# Temp and backup files
 *.bak
+*.bak2
 *.backup
-*.old
-
-# Test files
+*.html
+debug_table*.py
+fix_*.py
 test_*.py
-*_test.py
-tests/
-test/
-
-# Documentation build
-docs/_build/
-site/
-
-# Coverage reports
-htmlcov/
-.coverage
-.coverage.*
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
+autologin*.py*
+autologin_wrapper*
+attendence_backup/
+cron_error.log.*
+cron_output.log.*

@@ -1,104 +1,59 @@
-# Sharda Attendance Bot 🤖
+# 🚀 Simple Sharda Attendance Bot
 
-An automated Telegram bot that helps Sharda University students check their attendance, view timetables, and get today's classes without manually logging into the portal.
+A clean, simple Telegram bot for checking Sharda University attendance. No conflicts, no complexity!
 
 ## ✨ Features
 
-- 🤖 **Automated Login** - Secure login to Sharda E-Zone portal
-- 📊 **Attendance Check** - Get attendance percentages for all courses
-- 📅 **Today's Classes** - View today's schedule with times and rooms
-- 📋 **Full Timetable** - Access complete weekly timetable
-- 📧 **Email OTP** - Automatic OTP retrieval from Gmail
-- 📱 **Telegram Integration** - All results sent directly to Telegram
-- 🖼️ **Screenshots** - Automatic capture and sending of timetable images
+- ✅ Simple Telegram bot
+- ✅ Clean code structure
+- ✅ No complex configurations
+- ✅ Easy to understand and modify
 
-## 🚀 Quick Start
+## 🛠️ Setup
 
-### Prerequisites
-- Python 3.7+
-- Chrome browser
-- Gmail account (for OTP)
-- Telegram account
-- Sharda University account
+### 1. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
 
-### Setup (5 minutes)
+### 2. Create Bot Token
+1. Go to [@BotFather](https://t.me/botfather) on Telegram
+2. Send `/newbot`
+3. Choose a name for your bot
+4. Get your bot token
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/harshhh817/sharda-attendance-bot.git
-   cd sharda-attendance-bot
-   ```
+### 3. Update .env File
+Replace `YOUR_NEW_BOT_TOKEN_HERE` with your actual bot token:
+```bash
+TELEGRAM_BOT_TOKEN=1234567890:ABCdefGHIjklMNOpqrsTUVwxyz
+```
 
-2. **Run the setup wizard**
-   ```bash
-   python3 setup.py
-   ```
-
-3. **Start the bot**
-   ```bash
-   ./scripts/start_bot.sh
-   ```
-
-4. **Test on Telegram**
-   Send `/start` to your bot
+### 4. Run the Bot
+```bash
+python simple_bot.py
+```
 
 ## 📱 Commands
 
-| Command | Description |
-|---------|-------------|
-| `/start` | Welcome message and available commands |
-| `/check` | Check attendance for all courses |
-| `/today` | Get today's class schedule |
-| `/timetable` | Get full weekly timetable |
+- `/start` - Start the bot
+- `/attendance` - Check your attendance
+- `/help` - Show help
 
-## 📁 Project Structure
+## 🔧 How It Works
 
-```
-sharda-attendance-bot/
-├── README.md              # This file
-├── setup.py               # Setup wizard
-├── requirements.txt       # Python dependencies
-├── config_template.py     # Configuration template
-├── .gitignore            # Git ignore rules
-├── scripts/              # Bot management scripts
-│   ├── start_bot.sh
-│   ├── stop_bot.sh
-│   └── restart_bot.sh
-├── docs/                 # Documentation
-│   ├── QUICK_START.md
-│   ├── DEPLOYMENT.md
-│   └── SHARING_GUIDE.md
-└── src/                  # Bot source code
-    ├── telegram_bot_handler.py
-    ├── autologin.py
-    ├── fetch_otp.py
-    ├── fetch_today_classes.py
-    ├── fetch_timetable.py
-    └── imap.py
-```
+1. **Simple Structure**: One file, clean code
+2. **No Conflicts**: Fresh start, no old configurations
+3. **Easy Debugging**: Clear error messages
+4. **Minimal Dependencies**: Only what's needed
 
-## 🔧 Configuration
+## 🎯 Next Steps
 
-The setup wizard will help you configure:
-- **System ID** - Your Sharda University System ID
-- **Gmail credentials** - For OTP retrieval
-- **Telegram bot token** - From @BotFather
-- **Telegram chat ID** - Your chat ID
+1. Test the bot with `/start`
+2. Try `/attendance` to check attendance
+3. Modify the code as needed
 
-## 📚 Documentation
+This bot is designed to be simple and conflict-free!
 
-- **[Quick Start Guide](docs/QUICK_START.md)** - Get started in 5 minutes
-- **[Deployment Guide](docs/DEPLOYMENT.md)** - Deploy to cloud platforms
-- **[Sharing Guide](docs/SHARING_GUIDE.md)** - Share with other students
 
-## 🤝 Contributing
 
-Feel free to submit issues and enhancement requests!
 
-## 📄 License
-
-This project is for educational purposes. Use responsibly and in accordance with your institution's policies.
-
-## ⚠️ Disclaimer
-
-This bot is designed to help students stay organized. Please attend your classes regularly and use this tool responsibly.
